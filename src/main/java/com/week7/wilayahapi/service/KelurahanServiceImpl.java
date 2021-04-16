@@ -36,7 +36,7 @@ public class KelurahanServiceImpl implements KelurahanService{
 
     @Override
     public List<Kelurahan> getAllKelurahan() {
-        return kelRepo.findAll();
+        return kelRepo.findByIsDeleted(0);
     }
 
     @Override

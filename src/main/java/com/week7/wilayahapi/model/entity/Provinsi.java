@@ -1,10 +1,14 @@
 package com.week7.wilayahapi.model.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,6 +39,6 @@ public class Provinsi implements Serializable{
     @Column(length = 1)
     private Integer isDeleted;
 
-    // @OneToMany(mappedBy = "provinsi")
-    // private List<Kabupaten> kabupatens;
+    // @OneToMany(mappedBy = "provinsi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // private Set<Kabupaten> kabupatens;
 }

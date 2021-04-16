@@ -32,7 +32,7 @@ public class ProvinsiServiceImpl implements ProvinsiService{
 
     @Override
     public List<Provinsi> getAllProvinsi() {
-        List<Provinsi> provinsis = provinsiRepo.findAll();
+        List<Provinsi> provinsis = provinsiRepo.findByIsDeleted(0);
         return provinsis;
     }
 

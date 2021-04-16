@@ -76,9 +76,16 @@ public class ProvinsiController {
             List<Provinsi> provinsis = provinsiService.getAllProvinsi();
             MessagesDto<List<Provinsi>> result = new MessagesDto<>();
 
-            result.setStatus(HttpStatus.OK.value());
-            result.setMessage("Data berjasil didapatkan!");
-            result.setData(provinsis);
+            if(provinsis.isEmpty() == false){
+                result.setStatus(HttpStatus.OK.value());
+                result.setMessage("Data berjasil didapatkan!");
+                result.setData(provinsis);
+            }
+            else{
+                result.setStatus(HttpStatus.BAD_REQUEST.value());
+                result.setMessage("Data tidak ditemukan!");
+                result.setData(provinsis);
+            }
 
             return ResponseEntity.ok(result);
     

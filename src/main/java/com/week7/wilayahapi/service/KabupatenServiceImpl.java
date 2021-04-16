@@ -37,7 +37,7 @@ public class KabupatenServiceImpl implements KabupatenService{
 
     @Override
     public List<Kabupaten> getAllKabupaten() {
-        return kabRepo.findAll();
+        return kabRepo.findByIsDeleted(0);
     }
 
     @Override

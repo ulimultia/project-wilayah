@@ -84,7 +84,7 @@ public class KelurahanController {
             MessagesDto<List<Kelurahan>> result = new MessagesDto<>();
             List<Kelurahan> kelurahans = kelService.getAllKelurahan();
 
-            if(kelurahans != null){ // jika data kelurahan ditemukan
+            if(kelurahans.isEmpty() == false ){ // jika data kelurahan ditemukan
                 result.setStatus(HttpStatus.OK.value());
                 result.setMessage("Data kelurahan berhasil didapatkan ... !");
                 result.setData(kelurahans);

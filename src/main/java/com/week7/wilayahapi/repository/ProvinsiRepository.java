@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProvinsiRepository extends JpaRepository<Provinsi, Integer>{
     // cari berdasarkan kode provinsi
+    @Query(value = "SELECT * FROM tbl_provinsi WHERE is_deleted = 0 AND kode_provinsi = ?", nativeQuery = true)
     public Provinsi findByKodeProvinsi(String kodeProvinsi);
 
-    @Query(value = "SELECT kode_provinsi FROM tbl_provinsi", nativeQuery = true)
-    public List<Provinsi> getDataProvinsiAktif();
+    // tampil semua berdasarkan is deletednya
+    // @Query(value = "SELECT * FROM tbl_provinsi WHERE is_deleted = 0", nativeQuery = true)
+    public List<Provinsi> findByIsDeleted(Integer isDeleted);
 }

@@ -84,7 +84,7 @@ public class KabupatenController {
             MessagesDto<List<Kabupaten>> result = new MessagesDto<>();
             List<Kabupaten> kabupatens = kabService.getAllKabupaten();
 
-            if(kabupatens != null){ // jika data kabupaten ditemukan
+            if(kabupatens.isEmpty() == false){ // jika data kabupaten ditemukan
                 result.setStatus(HttpStatus.OK.value());
                 result.setMessage("Data kabupaten berhasil didapatkan ... !");
                 result.setData(kabupatens);

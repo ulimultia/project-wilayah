@@ -84,7 +84,7 @@ public class KecamatanController {
             MessagesDto<List<Kecamatan>> result = new MessagesDto<>();
             List<Kecamatan> kecamatans = kecService.getAllKecamatan();
 
-            if(kecamatans != null){ // jika data kecamatan ditemukan
+            if(kecamatans.isEmpty() == false){ // jika data kecamatan ditemukan
                 result.setStatus(HttpStatus.OK.value());
                 result.setMessage("Data kecamatan berhasil didapatkan ... !");
                 result.setData(kecamatans);

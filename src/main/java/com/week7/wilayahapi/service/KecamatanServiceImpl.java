@@ -36,7 +36,7 @@ public class KecamatanServiceImpl implements KecamatanService{
 
     @Override
     public List<Kecamatan> getAllKecamatan() {
-        return kecRepo.findAll();
+        return kecRepo.findByIsDeleted(0);
     }
 
     @Override
