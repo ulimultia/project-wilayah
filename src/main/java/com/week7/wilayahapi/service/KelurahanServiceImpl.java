@@ -65,5 +65,10 @@ public class KelurahanServiceImpl implements KelurahanService{
 
         return kelurahan;
     }
+
+    @Override
+    public Kelurahan getById(Integer id) {
+        return kelRepo.findById(id).get();
+    }
     
 }

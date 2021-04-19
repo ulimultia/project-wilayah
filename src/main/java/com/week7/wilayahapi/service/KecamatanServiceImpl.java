@@ -65,5 +65,10 @@ public class KecamatanServiceImpl implements KecamatanService{
 
         return kecamatan;
     }
+
+    @Override
+    public Kecamatan getById(Integer id) {
+        return kecRepo.findById(id).get();
+    }
     
 }

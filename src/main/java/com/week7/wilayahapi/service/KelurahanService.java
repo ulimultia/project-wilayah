@@ -11,4 +11,5 @@ public interface KelurahanService {
     public Kelurahan getByKodKelurahan(String kodeKelurahan);
     public Kelurahan ediKelurahan(String kodeKelurahan, KelurahanDto dto);
     public Kelurahan removeKelurahan(String kodeKelurahan);
+    public Kelurahan getById(Integer id);
 }

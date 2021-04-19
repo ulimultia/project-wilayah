@@ -11,4 +11,5 @@ public interface KabupatenService {
     public Kabupaten getByKodeKabupaten(String kodeKabupaten);
     public Kabupaten ediKabupaten(String kodeKabupaten, KabupatenDto dto);
     public Kabupaten remoKabupaten(String kodeKabupaten);
+    public Kabupaten getById(Integer id);
 }

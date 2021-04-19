@@ -1,6 +1,7 @@
 package com.week7.wilayahapi.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.week7.wilayahapi.model.entity.Kecamatan;
 
@@ -18,4 +19,5 @@ public interface KecamatanRepository extends JpaRepository<Kecamatan, Integer>{
     // @Query(value = "select * from tbl_kecamatan where is_deleted = 0", nativeQuery = true)
     public List<Kecamatan> findByIsDeleted(Integer isDeleted);
     
+    public Optional<Kecamatan> findById(Integer id);
 }

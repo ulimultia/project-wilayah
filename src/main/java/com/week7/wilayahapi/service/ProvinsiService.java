@@ -13,4 +13,5 @@ public interface ProvinsiService {
     public Provinsi getByKodeProvinsi(String kodeProvinsi);
     public Provinsi editProvinsi(String kodeProvinsi, ProvinsiDto dto);
     public Provinsi removeProvinsi(String kodeProvinsi);
+    public Provinsi getById(Integer id);
 }

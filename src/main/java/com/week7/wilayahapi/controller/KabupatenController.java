@@ -106,6 +106,35 @@ public class KabupatenController {
         }
     }
 
+    // get by id
+    @GetMapping("/kabupaten/id/{id}")
+    public ResponseEntity<?> getById(@PathVariable Integer id){
+        try {
+            MessagesDto<Kabupaten> result = new MessagesDto<>();
+            Kabupaten kabupaten = kabService.getById(id);
+
+            if(kabupaten != null){ // jika data kabupaten ditemukan
+                result.setStatus(HttpStatus.OK.value());
+                result.setMessage("Data kabupaten berhasil didapatkan ... !");
+                result.setData(kabupaten);
+    
+                return ResponseEntity.ok(result);
+            }
+            else{ // jika data kabupaten tidak ditemukan
+                result.setStatus(HttpStatus.BAD_REQUEST.value());
+                result.setMessage("Data kabupaten tidak ditemukan ... !");
+                result.setData(kabupaten);
+    
+                return ResponseEntity.badRequest().body(result);
+            }
+        } catch (Exception e) {
+            MessagesDto<Kabupaten> result = new MessagesDto<>();
+            result.setStatus(HttpStatus.BAD_REQUEST.value());
+            result.setMessage(e.getMessage());
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
     // get by kode kabupaten
     @GetMapping("kabupaten/{kodeKabupaten}")
     public ResponseEntity<?> getByKodeKabupaten(@PathVariable String kodeKabupaten){

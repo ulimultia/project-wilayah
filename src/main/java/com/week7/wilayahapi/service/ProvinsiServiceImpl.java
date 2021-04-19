@@ -68,5 +68,10 @@ public class ProvinsiServiceImpl implements ProvinsiService{
 
         return wilayah;
     }
+
+    @Override
+    public Provinsi getById(Integer id) {
+        return provinsiRepo.findById(id).get();
+    }
     
 }

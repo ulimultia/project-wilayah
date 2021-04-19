@@ -97,6 +97,35 @@ public class ProvinsiController {
         }
     }
 
+    // get by id
+    @GetMapping("/provinsi/id/{id}")
+    public ResponseEntity<?> getById(@PathVariable Integer id){
+        try {
+            MessagesDto<Provinsi> result = new MessagesDto<>();
+            Provinsi provinsi = provinsiService.getById(id);
+
+            if(provinsi != null){ // jika data provinsi ditemukan
+                result.setStatus(HttpStatus.OK.value());
+                result.setMessage("Data provinsi berhasil didapatkan ... !");
+                result.setData(provinsi);
+    
+                return ResponseEntity.ok(result);
+            }
+            else{ // jika data provinsi tidak ditemukan
+                result.setStatus(HttpStatus.BAD_REQUEST.value());
+                result.setMessage("Data provinsi tidak ditemukan ... !");
+                result.setData(provinsi);
+    
+                return ResponseEntity.badRequest().body(result);
+            }
+        } catch (Exception e) {
+            MessagesDto<Provinsi> result = new MessagesDto<>();
+            result.setStatus(HttpStatus.BAD_REQUEST.value());
+            result.setMessage(e.getMessage());
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
     // Get by kode provinsi
     @GetMapping("/provinsi/{kodeProvinsi}")
     public ResponseEntity<?> getByKodeProvinasi(@PathVariable String kodeProvinsi){

@@ -11,4 +11,5 @@ public interface KecamatanService {
     public Kecamatan getByKodKecamatan(String kodeKecamatan);
     public Kecamatan ediKecamatan(String kodeKecamatan, KecamatanDto dto);
     public Kecamatan removeKecamatan(String kodeKecamatan);
+    public Kecamatan getById(Integer id);
 }

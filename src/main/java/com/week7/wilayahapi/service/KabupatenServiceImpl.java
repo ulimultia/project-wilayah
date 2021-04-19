@@ -66,5 +66,10 @@ public class KabupatenServiceImpl implements KabupatenService{
 
         return kabupaten;
     }
+
+    @Override
+    public Kabupaten getById(Integer id) {
+        return kabRepo.findById(id).get();
+    }
     
 }

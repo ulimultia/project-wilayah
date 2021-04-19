@@ -106,6 +106,35 @@ public class KecamatanController {
         }
     }
 
+    // get by id
+    @GetMapping("/kecamatan/id/{id}")
+    public ResponseEntity<?> getById(@PathVariable Integer id){
+        try {
+            MessagesDto<Kecamatan> result = new MessagesDto<>();
+            Kecamatan kecamatan = kecService.getById(id);
+
+            if(kecamatan != null){ // jika data kecamatan ditemukan
+                result.setStatus(HttpStatus.OK.value());
+                result.setMessage("Data kecamatan berhasil didapatkan ... !");
+                result.setData(kecamatan);
+    
+                return ResponseEntity.ok(result);
+            }
+            else{ // jika data kecamatan tidak ditemukan
+                result.setStatus(HttpStatus.BAD_REQUEST.value());
+                result.setMessage("Data kecamatan tidak ditemukan ... !");
+                result.setData(kecamatan);
+    
+                return ResponseEntity.badRequest().body(result);
+            }
+        } catch (Exception e) {
+            MessagesDto<Kecamatan> result = new MessagesDto<>();
+            result.setStatus(HttpStatus.BAD_REQUEST.value());
+            result.setMessage(e.getMessage());
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
     // get by kode kecamatan
     @GetMapping("/kecamatan/{kodeKecamatan}")
     public ResponseEntity<?> getByKodeKecamatan(@PathVariable String kodeKecamatan){
