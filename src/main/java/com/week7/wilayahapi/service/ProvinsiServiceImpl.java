@@ -62,14 +62,6 @@ public class ProvinsiServiceImpl implements ProvinsiService{
     }
 
     @Override
-    public List<WilayahDto> getAllWilayah() {
-        List<WilayahDto> wilayah = null;
-
-
-        return wilayah;
-    }
-
-    @Override
     public Provinsi getById(Integer id) {
         return provinsiRepo.findById(id).get();
     }

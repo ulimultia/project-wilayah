@@ -8,6 +8,7 @@ import com.week7.wilayahapi.model.entity.Kelurahan;
 public interface KelurahanService {
     public Kelurahan inputKelurahan(KelurahanDto dto);
     public List<Kelurahan> getAllKelurahan();
+    public List<Kelurahan> getByKecamatan(String kodeKecamatan);
     public Kelurahan getByKodKelurahan(String kodeKelurahan);
     public Kelurahan ediKelurahan(String kodeKelurahan, KelurahanDto dto);
     public Kelurahan removeKelurahan(String kodeKelurahan);

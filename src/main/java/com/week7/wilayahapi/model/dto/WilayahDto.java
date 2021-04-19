@@ -14,6 +14,4 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class WilayahDto {
     private List<Provinsi> provinsis;
-    private List<Kabupaten> kabupatens; 
-
 }

@@ -71,5 +71,11 @@ public class KabupatenServiceImpl implements KabupatenService{
     public Kabupaten getById(Integer id) {
         return kabRepo.findById(id).get();
     }
+
+    @Override
+    public List<Kabupaten> getByProvinsi(String kodeProvinsi) {
+        Provinsi provinsi = provRepo.findByKodeProvinsi(kodeProvinsi);
+        return kabRepo.findByProvinsi(provinsi);
+    }
     
 }

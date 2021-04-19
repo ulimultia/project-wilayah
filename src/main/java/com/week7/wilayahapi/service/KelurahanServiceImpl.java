@@ -70,5 +70,11 @@ public class KelurahanServiceImpl implements KelurahanService{
     public Kelurahan getById(Integer id) {
         return kelRepo.findById(id).get();
     }
+
+    @Override
+    public List<Kelurahan> getByKecamatan(String kodeKecamatan) {
+        Kecamatan kecamatan = kecRepo.findByKodeKecamatan(kodeKecamatan);
+        return kelRepo.findByKecamatan(kecamatan);
+    }
     
 }

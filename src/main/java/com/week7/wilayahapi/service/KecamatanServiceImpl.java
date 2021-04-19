@@ -70,5 +70,11 @@ public class KecamatanServiceImpl implements KecamatanService{
     public Kecamatan getById(Integer id) {
         return kecRepo.findById(id).get();
     }
+
+    @Override
+    public List<Kecamatan> getByKabupaten(String kodeKabupaten) {
+        Kabupaten kabupaten = kabRepo.findByKodeKabupaten(kodeKabupaten);
+        return kecRepo.findByKabupaten(kabupaten);
+    }
     
 }

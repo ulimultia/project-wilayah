@@ -163,6 +163,35 @@ public class KelurahanController {
         }
     }
 
+    // get by kode kecamatan
+    @GetMapping("kelurahan/kec/{kodeKecamatan}")
+    public ResponseEntity<?> getByKecamatan(@PathVariable String kodeKecamatan){
+        try {
+            MessagesDto<List<Kelurahan>> result = new MessagesDto<>();
+            List<Kelurahan> kelurahan = kelService.getByKecamatan(kodeKecamatan);
+
+            if(kelurahan != null){ // jika data kelurahan ditemukan
+                result.setStatus(HttpStatus.OK.value());
+                result.setMessage("Data kelurahan berhasil didapatkan ... !");
+                result.setData(kelurahan);
+    
+                return ResponseEntity.ok(result);
+            }
+            else{ // jika data kelurahan tidak ditemukan
+                result.setStatus(HttpStatus.BAD_REQUEST.value());
+                result.setMessage("Data kelurahan tidak ditemukan ... !");
+                result.setData(kelurahan);
+    
+                return ResponseEntity.badRequest().body(result);
+            }
+        } catch (Exception e) {
+            MessagesDto<List<Kelurahan>> result = new MessagesDto<>();
+            result.setStatus(HttpStatus.BAD_REQUEST.value());
+            result.setMessage(e.getMessage());
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
     // UPDATE kelurahan
     @PutMapping("/kelurahan/update/{kodeKelurahan}")
     public ResponseEntity<?> updateKelurahan (@PathVariable String kodeKelurahan, @RequestBody KelurahanDto dto){

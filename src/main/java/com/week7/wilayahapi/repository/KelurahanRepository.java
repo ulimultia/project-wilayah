@@ -22,6 +22,7 @@ public interface KelurahanRepository extends JpaRepository<Kelurahan, Integer>{
 
     public List<Kelurahan> findByKecamatan(Kecamatan kecamatan); 
 
+    @Query(value = "select * from tbl_kelurahan where is_deleted = 0 AND id = ?", nativeQuery = true)
     public Optional<Kelurahan> findById(Integer id);
 
 }

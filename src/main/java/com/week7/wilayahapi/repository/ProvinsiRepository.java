@@ -19,5 +19,6 @@ public interface ProvinsiRepository extends JpaRepository<Provinsi, Integer>{
     // @Query(value = "SELECT * FROM tbl_provinsi WHERE is_deleted = 0", nativeQuery = true)
     public List<Provinsi> findByIsDeleted(Integer isDeleted);
 
+    @Query(value = "SELECT * FROM tbl_provinsi WHERE is_deleted = 0 AND id = ?", nativeQuery = true)
     public Optional<Provinsi> findById(Integer id);
 }
